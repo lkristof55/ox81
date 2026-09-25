@@ -1,0 +1,29 @@
+{
+ "_note": "getTransaction(5hHdshyVtQ2XfwXEEZZzc5cwXuXct2bZdxHwqEfo4Hi56nPqBWNyw1n7yLaiczmucYQCMnZVcF4mCRFKi29JamNb, base64, maxSupportedTransactionVersion 1)",
+ "signature": "5hHdshyVtQ2XfwXEEZZzc5cwXuXct2bZdxHwqEfo4Hi56nPqBWNyw1n7yLaiczmucYQCMnZVcF4mCRFKi29JamNb",
+ "slot": 450355468,
+ "blockTime": 1790340035,
+ "version": 0,
+ "transaction": [
+  "AerPUGvDe+AbRuYdfiVfQ/tJ3CFt3+0ST9KXCCFxd0b5lkMRYpY4FVPTbQShl8XqFKpq+A0GNxQGoA+t0K+R3AyAAQADBfCyqBNxUJwGFCV693yJp4a9B+6J2Idr4BhpdQ2ZdbGWZh5fR0Lka5V1/kdZmfMq7y4wDI1nCIHctNCR7OcZZ5YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMGRm/lIRcy/+ytunLDm+e8jOW7xfcSayxDmzpAAAAAlh/gbTTzQoBI38TEFcfg0Z/lkrEiYGCeLL8BbYaUoWOduFcjSG392sSQoM45RlzgVnibY6CYZ0CIdY9Iw7BKEAUCAwEKAAQEAAAAAwAGAuADAABcAwAFBAWnBAAEBgAJBgcIBecBBAAAAAAAAAAADOHXGgAAAAC0xQACAgUm9GZkciCCNH/NmlU/JWKACBrvhmimpXP31OHXYLQUwRxWtqYRFie3YKheIWdYrYa4fAZbl7rKa6ltAJJHNml2u7YqkNSqwY2xGfu38Z3sXQfwAkcAqOs0AgIHuAS5yWZgYmjviPa/Fu/mmYW8tvEDj+ZvUX8RCtZ05WTjtaZUXl64wIYrKvhV04N14jXTOs3udgE4iKUU1HdwqcSRRrHptSb+txcNNQH+r3tHwk12ie6HU3UuE6v5AOjMti4qbRKi0SlXCHaqUnIcslk4BQIAAwAJAyC/AgAAAAAAAUrM2fUqPXglkBcwV+a7grndLI1z/2VX8xRvy1SCyxetBAAIGAICFBk=",
+  "base64"
+ ],
+ "meta": {
+  "err": null,
+  "fee": 5179,
+  "computeUnitsConsumed": 941,
+  "costUnits": 3596,
+  "loadedAddresses": {
+   "writable": [
+    "XFWddpA74utWti2HR1Xh2mFThW88dD8tYd4Rh3yfZLC",
+    "F7mQKBd1r7gj78KdqFucxbvfE83nX1EjDco9YcBCDEFv",
+    "FTKzaEaMzZbmbYHS15rVaxswV8BTH6u8bz4kng7wh7nu",
+    "GWqUcqoZtjq8K6H48YvcHJMEGq8CahNDGMuz3iqU4ESA"
+   ],
+   "readonly": [
+    "SysvarC1ock11111111111111111111111111111111",
+    "SysvarRecentB1ockHashes11111111111111111111"
+   ]
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "_note": "Expected output produced by an independent Python reference decoder (not shipped) from the same mainnet bytes. Structural fields must match exactly; wording may differ.",
+ "window": "latest",
+ "fallback": false,
+ "stale": false,
+ "generatedAt": "2026-09-25T12:49:21Z",
+ "blocks": 1,
+ "slots": {
+  "first": 450355468,
+  "last": 450355468
+ },
+ "blockTime": {
+  "first": 1790340035,
+  "last": 1790340035
+ },
+ "txs": {
+  "total": 974,
+  "vote": 606,
+  "nonVote": 368
+ },
+ "versions": {
+  "legacy": 671,
+  "v0": 203,
+  "v1": 100
+ },
+ "versionsNonVote": {
+  "legacy": 65,
+  "v0": 203,
+  "v1": 100
+ },
+ "v1": {
+  "count": 100,
+  "shareAll": 0.1027,
+  "shareNonVote": 0.2717,
+  "over1232": 52,
+  "deadComputeBudget": {
+   "txs": 3,
+   "ixs": 3,
+   "cu": 450,
+   "failedTxs": 3,
+   "share": 0.03,
+   "examples": [
+    "W81fNLqueZDWx5335CaemPZE2D8EuqAYhwUD47WX5RexigN9BEjGxmZcaoLkFsitubvAY6wYXfi8hnLrPoB7FMz",
+    "5L1DxCyq3MWNLW8qJCq4VkhYrfEnKH5jPvNMcJwpsNw2xxwZhuXC89mcxjCffgJAAAkVqJbRqHxNtVjZJtdkoAAQ",
+    "2kcwLTWjcNGAtCLC88qt6rhNuLjARFruRRZk1CurPSy3xcvt3AXFJyaySQg2CrrqSMwcLYV4HfYDCrpDCpiRqNF8"
+   ]
+  },
+  "priorityOnlyInIx": 0,
+  "loadedLimitMax": 31,
+  "cuLimitAbsent": 0,
+  "loadedLimitAbsent": 0,
+  "cuOveraskMedian": 5.86,
+  "masks": [
+   {
+    "mask": 15,
+    "bits": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "count": 63
+   },
+   {
+    "mask": 31,
+    "bits": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "count": 33
+   },
+   {
+    "mask": 12,
+    "bits": [
+     2,
+     3
+    ],
+    "count": 4
+   }
+  ],
+  "size": {
+   "p50": 1415,
+   "p90": 2240,
+   "max": 2401
+  }
+ },
+ "v0": {
+  "count": 203,
+  "withLookups": 84
+ },
+ "card": {
+  "line": "v1 = 10.3% of txs \u00b7 3.0% of v1 still pay for dead ComputeBudget ixs"
+ }
+}
