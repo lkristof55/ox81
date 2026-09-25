@@ -28,7 +28,7 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./src/*": "./src/*"
+    "./package.json": "./package.json"
   },
   "bin": {
     "ox81": "dist/cli.js"

@@ -39,7 +39,9 @@ It is TypeScript with erasable syntax only, so Node >= 23.6 runs `src/*.ts` dire
 npm i ox81          # not published yet (planned); for now: clone this repo
 ```
 
-Node >= 20 for the built package (`dist/`); Node >= 23.6 to run `src/*.ts`, the tests and the examples directly.
+Node >= 20 for the built package (`dist/`); Node >= 23.6 to run `src/*.ts`, the tests and the examples directly from a clone.
+
+The package exports only built JavaScript: `ox81` resolves to `dist/index.js` (types in `dist/index.d.ts`) and the `ox81` bin to `dist/cli.js`. `src/` is shipped for reading only and is not an export, because Node refuses to strip types from files under `node_modules`.
 
 ## Usage
 
