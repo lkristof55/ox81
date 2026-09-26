@@ -1,0 +1,9 @@
+{"machine":"measured by the library bench on Apple M5, 10 cores, 16 GB, Node v26.8.1, 2026-09-25 · fixture: recorded mainnet block 450,355,468 (974 txs, 560,865 B)","command":"npm run bench","note":"pasted from the repo README; ranges are min–max over runs","rows":[
+{"parameter":"sniff()","condition":"per tx, whole block","value":"5.6","unit":"ns/tx"},
+{"parameter":"decode() + byte map","condition":"all 974 txs","value":"42,837–43,181","unit":"txs/s"},
+{"parameter":"decode()","condition":"the 100 v1 txs only (p50 1,415 B)","value":"17,422–17,666","unit":"txs/s"},
+{"parameter":"xray() full","condition":"decode + accounts + lint + misread + v1Port + base64","value":"29,551–29,736","unit":"txs/s"},
+{"parameter":"census()","condition":"whole block, base64 decode included, network excluded; median of 25","value":"37.3","unit":"ms"},
+{"parameter":"browser bundle","condition":"esbuild src/index.ts --bundle --minify --format=esm","value":"29,231 / 11,537","unit":"B min / gzip"},
+{"parameter":"reference: @solana/web3.js 1.99.0 VersionedTransaction.deserialize","condition":"same 974 txs; returns objects, no byte map or lint","value":"22,928–22,966","unit":"txs/s"}
+]}

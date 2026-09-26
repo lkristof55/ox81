@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ox81 · byte-exact X-ray for Solana transactions ($OXBYTE)</title>
+<meta name="description" content="Ox81 labels every byte of a Solana transaction (legacy, v0 and v1 / 0x81), shows how pre-v1 readers misread it, lints v1 resource requests and runs a live census of mainnet blocks.">
+<meta name="theme-color" content="#EDEEEB">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ox81 · byte-exact X-ray for Solana transactions">
+<meta property="og:description" content="offset 0: 0x81. every byte labelled, every misread shown, live census of v1 on mainnet.">
+<meta property="og:image" content="https://ox81.netlify.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ox81 ($OXBYTE)">
+<meta name="twitter:description" content="-32015: ox not supported by the requesting client.">
+<meta name="twitter:image" content="https://ox81.netlify.app/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-next-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#xray">skip to the x-ray</a>
+<canvas id="stage" aria-hidden="true"></canvas>
+<svg id="leaders" aria-hidden="true"></svg>
+<div id="labels" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Ox81, back to offset 0">
+    <svg viewBox="0 0 80 80" aria-hidden="true"><path fill="#121315" fill-rule="evenodd" d="M0 0 L10 0 L10 20 L70 20 L70 0 L80 0 L80 40 L70 40 L70 50 L60 50 L60 70 L50 70 L50 80 L30 80 L30 70 L20 70 L20 50 L10 50 L10 40 L0 40 Z M30 30 L20 30 L20 40 L30 40 Z M60 30 L50 30 L50 40 L60 40 Z"/><path fill="#FF4B12" d="M0 0 L10 0 L10 10 L0 10 Z M70 0 L80 0 L80 10 L70 10 Z"/></svg>
+    <b>Ox81</b><i>$OXBYTE</i>
+  </a>
+  <div class="tag"><span class="lg">Advance information</span><span class="sm">Adv. info</span></div>
+  <nav id="nav" aria-label="sections">
+    <a href="#pinout">Pinout</a><a href="#xray">X-ray</a><a href="#census">Census</a><a href="#repo">Repo</a>
+  </nav>
+  <div class="rev">Rev A · 2026-09-25</div>
+  <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main id="top">
+  <!-- 1 · PART -->
+  <section class="beat hero" id="part" data-beat="1">
+    <div class="col">
+      <p class="kicker">Datasheet · Solana transaction wire format <span>v1</span><br>SIMD-0385 · on mainnet since epoch 1035</p>
+      <h1 class="wordmark">Ox81</h1>
+      <h2 class="h-head">Byte-exact X-ray for Solana transactions.</h2>
+      <p class="lede">Legacy, v0 and v1 <em class="mono">(0x81)</em>. Paste a signature: every byte gets its field as an exact <em class="mono">[start, end)</em> range, no gaps. Then watch a pre-v1 reader misread the same bytes.</p>
+      <form class="probe" id="heroForm" autocomplete="off">
+        <input id="heroInput" name="q" spellcheck="false" placeholder="paste a signature or base64" aria-label="transaction signature or raw base64">
+        <button type="submit">X-ray <kbd>↵</kbd></button>
+      </form>
+      <div class="presets" id="heroPresets"><span>try:</span><em class="pending">reading the latest block…</em></div>
+      <p class="mcensus" id="mCensus"><i></i>reading the latest finalized block…</p>
+    </div>
+    <p class="fig" id="fig1"></p>
+    <div class="band">
+      <div class="census-line" id="censusBand">
+        <div class="lbl"><i></i>Census · live</div>
+        <div class="big" id="bandBig">––.–<small>%</small></div>
+        <div class="txt" id="bandTxt">reading the latest finalized block…</div>
+      </div>
+      <div class="caution">
+        <svg viewBox="0 0 38 34" aria-hidden="true"><path d="M19 2 L36.5 32 L1.5 32 Z" fill="none" stroke="#121315" stroke-width="3" stroke-linejoin="miter"/><rect x="17.2" y="11" width="3.6" height="12" fill="#121315"/><rect x="17.2" y="25.5" width="3.6" height="3.6" fill="#121315"/></svg>
+        <p><b>Caution · −32015</b>A reader capped at version 0 loses the whole block that carries this part, not just the part.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · -32015 / SEAT IT -->
+  <section class="beat pinned" id="readers" data-beat="2">
+    <div class="pin-inner">
+      <div class="runhead"><span>OX81-V1 <em class="ai"> · Advance information</em> · Readers</span><span>2 of 7</span></div>
+      <div class="split">
+        <div class="left">
+          <h2 class="h-beat"><span class="err">-32015</span>: ox not supported by the requesting client.</h2>
+          <p class="sub">same bytes, six readers. drag the part into yours, tap a socket, or press <kbd>1</kbd>–<kbd>6</kbd>.</p>
+          <p class="stamp" id="stamp" hidden></p>
+        </div>
+        <div class="right">
+          <div class="readout" id="readout" aria-live="polite">
+            <p class="ro-head" id="roHead">PART · <span id="roPart">OX81-V1</span></p>
+            <p class="ro-main" id="roMain">hovering 6 mm over the row. no contact yet.</p>
+            <p class="ro-sub" id="roSub"></p>
+          </div>
+        </div>
+      </div>
+      <div class="sockets" id="socketBtns" role="group" aria-label="reader sockets"></div>
+      <p class="edge-label" id="edgeLabel" hidden></p>
+    </div>
+  </section>
+
+  <!-- 3 · PINOUT -->
+  <section class="beat pinned" id="pinout" data-beat="3">
+    <div class="pin-inner">
+      <div class="runhead"><span>OX81-V1 <em class="ai"> · Advance information</em> · Pin configuration</span><span>3 of 7</span></div>
+      <h2 class="h-beat small">offset 0: <span class="mono-hl">0x81</span>. that's me.</h2>
+      <div class="timing">
+        <p class="t-title">Timing diagram · fields in offset order <span>(not to scale)</span></p>
+        <svg id="timing" role="img" aria-label="Timing diagram of the transaction fields in offset order"></svg>
+        <p class="caption"><b>Figure 3.</b> <span id="fig3"></span></p>
+      </div>
+      <p class="caption pin-cap"><b>Figure 2.</b> <span id="fig2"></span></p>
+    </div>
+  </section>
+
+  <!-- 4 · DECAP -->
+  <section class="beat pinned" id="decap" data-beat="4">
+    <div class="pin-inner">
+      <div class="runhead"><span>OX81-V1 <em class="ai"> · Advance information</em> · Decapsulated view</span><span>4 of 7</span></div>
+      <div class="left decap-left">
+        <h2 class="h-beat small">one pass. every byte lands in exactly one range.</h2>
+        <div class="listing" id="listing" aria-label="decode source from src/decode.ts"></div>
+        <p class="caption"><b>Listing 1.</b> <span id="listingCap">src/decode.ts, the walk that emits ranges.</span></p>
+        <p class="caption" style="margin-top:8px"><b>Figure 4.</b> <span id="fig4"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · BENCH (the function) -->
+  <section class="bench" id="xray" data-beat="5">
+    <div class="runhead"><span>OX81 <em class="ai"> · Advance information</em> · Bench · live x-ray</span><span>5 of 7</span></div>
+    <div class="bench-head">
+      <h2 class="h-beat">paste a signature. get every byte.</h2>
+      <form class="probe big" id="benchForm" autocomplete="off">
+        <input id="benchInput" name="q" spellcheck="false" placeholder="paste a signature or base64" aria-label="transaction signature or raw base64" aria-describedby="benchHelp">
+        <button type="submit">X-ray <kbd>↵</kbd></button>
+      </form>
+      <p class="helper" id="benchHelp">signature → 1 rpc call, cached 1 h · base64 → no rpc at all</p>
+      <div class="presets" id="benchPresets"><span>try:</span><em class="pending">reading the latest block…</em></div>
+    </div>
+    <div class="result" id="result" aria-live="polite"></div>
+  </section>
+
+  <!-- 6 · TYPICAL CHARACTERISTICS -->
+  <section class="beat pinned" id="census" data-beat="6">
+    <div class="pin-inner">
+      <div class="runhead"><span>OX81 <em class="ai"> · Advance information</em> · Typical characteristics</span><span>6 of 7</span></div>
+      <div class="census-grid">
+        <div class="wafer-cap">
+          <div class="wafer-slot" id="waferSlot" aria-hidden="true"></div>
+          <p class="caption"><b>Figure 5.</b> <span id="fig5">wafer map of the latest snapshot block. one die per tx.</span></p>
+          <ul class="legend">
+            <li><i class="k-v1"></i>v1 · 0x81</li><li><i class="k-v0"></i>v0 · 0x80</li><li><i class="k-lg"></i>legacy</li><li><i class="k-vote"></i>vote</li><li><i class="k-ink"></i>ink dot · v1 with dead ComputeBudget ixs</li>
+          </ul>
+        </div>
+        <div class="census-right">
+          <h2 class="h-beat small" id="censusHead">reading the latest finalized block…</h2>
+          <div class="toggle" role="group" aria-label="census window">
+            <button type="button" data-window="latest" aria-pressed="true">Latest block</button><button type="button" data-window="24h" aria-pressed="false">24 h</button>
+          </div>
+          <div id="censusTable" class="tbl-wrap"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bench-perf" id="bench">
+    <div class="runhead"><span>OX81 · Electrical characteristics · measured</span><span>6 of 7</span></div>
+    <div class="perf-grid">
+      <h3 class="h-sub">benchmarks. measured on this mac, command included.</h3>
+      <div id="benchTable"></div>
+    </div>
+  </section>
+
+  <!-- 7 · ORDERING INFORMATION -->
+  <section class="beat" id="repo" data-beat="7">
+    <div class="runhead"><span>OX81 · Ordering information</span><span>7 of 7</span></div>
+    <div class="mark-slot" id="markSlot" aria-hidden="true"></div>
+    <div class="order">
+      <div class="order-left">
+        <h2 class="h-beat">ordering information.</h2>
+        <p class="sub">the mark is 8 bytes: <span class="mono">81 81 ff db 7e 3c 3c 18</span>. the horns are the set bits.</p>
+        <table class="dt order-tbl">
+          <thead><tr><th>Item</th><th>Value</th><th>Status</th></tr></thead>
+          <tbody id="orderRows"></tbody>
+        </table>
+        <div class="cmds" id="cmds"></div>
+        <div class="planned-box">
+          <p class="tagline"><span class="ptag">Planned</span> v2, not built: a Geyser stream mode so the census covers every block instead of a 10-minute sample · a per-program leaderboard of dead-ComputeBudget senders · a loaded-accounts-data-size right-sizer · a WASM build for Geyser plugins.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <p>Ox81 decodes bytes. it holds no keys, sends no transactions and promises nothing about $OXBYTE. repo: <a class="mono" id="footRepo" href="https://github.com/lkristof55/ox81" target="_blank" rel="noopener">github.com/lkristof55/ox81</a> · MIT.</p>
+      <p class="foot-r">OX81-V1 · Rev A · 2026-09-25 · <a href="#top">back to offset 0 ↑</a></p>
+    </footer>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -171,9 +171,21 @@ The fixtures in `test/fixtures/` were recorded once with `OX81_RPC_URL=… npm r
 
 These all decode v1 into objects. ox81 maps every byte to its field as ranges that cover the transaction exactly. It also models how pre-v1 readers misread the same bytes, lints v1 resource-request mistakes, computes the exact v1 port size, and censuses live blocks, in one zero-dependency TypeScript package.
 
+## The live app
+
+[`app/`](app/) is the complete source of the live demo at **https://ox81.netlify.app**: the site (a scroll-driven datasheet whose 3D parts are built from real transactions) and the Netlify Functions that run this library on Solana mainnet (`/api/xray`, `/api/census`, `/api/featured`, `/api/health`, plus a census job every 10 minutes). The functions import the library straight from `src/`, so the demo runs the code in this repo. The library does not import anything from `app/`, and `app/` is not part of the npm package.
+
+```sh
+cd app && npm ci
+cp .env.example .env                        # HELIUS_API_KEY (or SOLANA_RPC_URL)
+npm test && npm run build && npm run dev    # http://localhost:8888
+```
+
+To deploy your own copy, connect this repo to a Netlify site and set `HELIUS_API_KEY` in its environment variables. The root [`netlify.toml`](netlify.toml) builds `app/`. [`app/README.md`](app/README.md) covers the endpoints, env vars, the scheduled function, the RPC credit budget and the asset licenses.
+
 ## License
 
-MIT, see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE). Exception: the third-party site assets in `app/site/public/` (HDRI CC0 1.0, fonts SIL OFL 1.1, Draco decoder Apache-2.0) keep their own licenses, listed in [`app/site/public/CREDITS.md`](app/site/public/CREDITS.md).
 
 ---
-Live demo site: Ox81 (the project this repo was built for).
+Live demo site: [ox81.netlify.app](https://ox81.netlify.app) (source in [`app/`](app/)).

@@ -1,0 +1,13 @@
+# Netlify builds the live app in app/ (https://ox81.netlify.app). The library at the repo root is not deployed;
+# the functions import it from ../src/*.ts and esbuild bundles it into each function.
+[build]
+  base = "app"
+  command = "npm run build"
+  publish = "site/dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Scheduled: census-cron runs every 10 minutes. The schedule is declared in the function itself
+# (app/netlify/functions/census-cron.mjs: export const config = { schedule: '*/10 * * * *' }).

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reached end of buffer unexpectedly · Ox81</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style.css">
+<style>
+  body{min-height:100vh}
+  .nf{min-height:100vh;display:grid;grid-template-columns:minmax(0,560px) 1fr;gap:48px;align-items:center;padding:calc(var(--hdr) + 40px) var(--m) 64px}
+  .nf h1{font:800 64px/.95 var(--display);letter-spacing:-.022em}
+  .nf p{font:500 14px/1.5 var(--mono);color:var(--graphite);margin-top:22px;max-width:52ch}
+  .nf a.btn{margin-top:28px;text-decoration:none}
+  .part{position:relative;justify-self:center;width:300px;height:260px}
+  .part .body{position:absolute;left:90px;top:40px;width:120px;height:180px;background:var(--epoxy)}
+  .part .lead{position:absolute;width:26px;height:8px;background:var(--tin)}
+  .part .dot{position:absolute;left:100px;top:50px;width:10px;height:10px;border-radius:50%;background:#2A2D31}
+  .callout{position:absolute;left:-150px;top:34px;font:600 11px/1.3 var(--mono);white-space:nowrap;text-align:right}
+  .callout b{border:1px dashed var(--ink);padding:1px 4px}
+  .callout i{display:block;font-style:normal;color:var(--graphite)}
+  .leader{position:absolute;left:-12px;top:44px;width:40px;border-top:1px dashed var(--ink)}
+  @media (max-width:768px){.nf{grid-template-columns:1fr}.nf h1{font-size:40px}.part{transform:scale(.8)}.callout{left:-80px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/" aria-label="Ox81, back to offset 0">
+    <svg viewBox="0 0 80 80" aria-hidden="true"><path fill="#121315" fill-rule="evenodd" d="M0 0 L10 0 L10 20 L70 20 L70 0 L80 0 L80 40 L70 40 L70 50 L60 50 L60 70 L50 70 L50 80 L30 80 L30 70 L20 70 L20 50 L10 50 L10 40 L0 40 Z M30 30 L20 30 L20 40 L30 40 Z M60 30 L50 30 L50 40 L60 40 Z"/><path fill="#FF4B12" d="M0 0 L10 0 L10 10 L0 10 Z M70 0 L80 0 L80 10 L70 10 Z"/></svg>
+    <b>Ox81</b><i>$OXBYTE</i>
+  </a>
+  <div class="tag"><span class="lg">Advance information</span><span class="sm">Adv. info</span></div>
+</header>
+<main class="nf" style="pointer-events:auto">
+  <div>
+    <p class="kicker">Error · page offset out of range · 404</p>
+    <h1 style="margin-top:18px">Reached end of buffer unexpectedly.</h1>
+    <p>this page is past the end of the buffer. no range starts here, so nothing got decoded and nothing got guessed. offset 0 is back here →</p>
+    <a class="btn solid" href="/">Back to offset 0</a>
+  </div>
+  <div class="part" aria-hidden="true">
+    <div class="body"></div><div class="dot"></div>
+    <div class="lead" style="left:64px;top:52px"></div><div class="lead" style="left:64px;top:82px"></div><div class="lead" style="left:64px;top:112px"></div><div class="lead" style="left:64px;top:142px"></div><div class="lead" style="left:64px;top:172px"></div><div class="lead" style="left:64px;top:202px"></div>
+    <div class="lead" style="left:210px;top:52px"></div><div class="lead" style="left:210px;top:82px"></div><div class="lead" style="left:210px;top:112px"></div><div class="lead" style="left:210px;top:142px"></div><div class="lead" style="left:210px;top:172px"></div><div class="lead" style="left:210px;top:202px"></div>
+    <div class="leader"></div>
+    <p class="callout"><b>PIN 1 · [0, 1)</b><i>out of range</i></p>
+  </div>
+</main>
+</body>
+</html>

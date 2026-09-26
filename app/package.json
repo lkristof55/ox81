@@ -1,0 +1,29 @@
+{
+  "name": "ox81-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The live Ox81 app (https://ox81.netlify.app): Netlify Functions and the site, running the ox81 library from the repo root on Solana mainnet data.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs --port 8888",
+    "watch": "node scripts/dev.mjs --port 8888 --watch",
+    "test": "node --test \"test/*.test.mjs\"",
+    "smoke": "node test/smoke.mjs http://localhost:8888",
+    "record": "node test/record.mjs",
+    "listing": "node site/tools/listing.mjs"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "@netlify/blobs": "11.1.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "three": "0.186.1"
+  }
+}
