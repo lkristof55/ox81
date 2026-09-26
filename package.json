@@ -44,7 +44,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test \"test/*.test.ts\"",
     "bench": "node bench/bench.ts",
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
