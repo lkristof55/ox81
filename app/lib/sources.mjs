@@ -39,11 +39,18 @@ export async function getTransaction(sig) {
   }
 }
 
-/** Helius getSlot(finalized) + getBlock(tip), falling back to tip-1..tip-5 for skipped slots. 2 credits typical. */
-export async function getLatestBlock() {
+// Asks the RPC for an uncompressed body (Accept-Encoding: identity). The block is the same bytes; the worker just
+// doesn't spend CPU inflating 2-3 MB of gzip before parsing it. Goes through the library's documented `fetch` option.
+const identityFetch = (url, init = {}) => globalThis.fetch(url, { ...init, headers: { ...init.headers, 'accept-encoding': 'identity' } });
+
+/**
+ * Helius getSlot(finalized) + getBlock(tip), falling back to tip-1..tip-5 for skipped slots. 2 credits typical.
+ * `identity: true` asks for an uncompressed response (the Cloudflare free-plan budget uses it).
+ */
+export async function getLatestBlock({ identity = false } = {}) {
   const url = requireUrl();
   try {
-    return await fetchLatestBlock(url, { timeoutMs: 8000, retries: 2, back: 5 });
+    return await fetchLatestBlock(url, { timeoutMs: 8000, retries: 2, back: 5, ...(identity ? { fetch: identityFetch } : {}) });
   } catch (e) {
     throw wrap(e);
   }

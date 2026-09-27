@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "The live Ox81 app (https://ox81.netlify.app): Netlify Functions and the site, running the ox81 library from the repo root on Solana mainnet data.",
+  "description": "The live Ox81 app (https://ox81.anyfee.workers.dev): the site and its backend (Netlify Functions, also run as a Cloudflare Worker), running the ox81 library from the repo root on Solana mainnet data.",
   "license": "MIT",
   "scripts": {
     "build": "node scripts/build.mjs",

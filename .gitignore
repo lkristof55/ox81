@@ -7,3 +7,5 @@ app/.data/
 app/site/dist/
 app/.env
 .netlify/
+app/.wrangler/
+app/.dev.vars

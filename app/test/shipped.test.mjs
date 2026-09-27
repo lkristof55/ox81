@@ -14,7 +14,7 @@ const SECRETS = ['HELIUS_API_KEY', 'BIRDEYE_API_KEY'].map((k) => process.env[k])
 const APP = fileURLToPath(new URL('..', import.meta.url));
 const REPO = join(APP, '..');
 const TEXT = new Set(['.mjs', '.js', '.json', '.html', '.css', '.md', '.svg', '.glsl', '.example', '']);
-const SKIP = new Set(['node_modules', 'dist', '.data', '.git', '.netlify']);
+const SKIP = new Set(['node_modules', 'dist', '.data', '.git', '.netlify', '.wrangler']);
 
 function walk(dir, out = []) {
   for (const n of readdirSync(dir)) {

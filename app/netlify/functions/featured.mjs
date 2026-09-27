@@ -7,7 +7,7 @@ export default async (req) => {
   try {
     const body = await readFresh('featured/latest');
     if (!body) return fail('UPSTREAM', 'no snapshot yet');
-    return ok({ ...body, stale: !!body.stale }, 300);
+    return ok({ ...body, stale: !!body.stale }, body.warming ? 0 : 300);
   } catch (e) {
     return e.timeout ? fail('TIMEOUT', 'the RPC did not answer within 8 s and no snapshot exists yet') : fail('UPSTREAM', `could not load featured transactions: ${e.message}`);
   }

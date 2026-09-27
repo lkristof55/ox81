@@ -1,0 +1,32 @@
+// Cloudflare Workers target (the Netlify setup in ../netlify.toml is unchanged). Deploy steps: README.md,
+// "Deploy to Cloudflare Workers". Secrets (HELIUS_API_KEY, ...) are set with `wrangler secret put`, never here.
+{
+  "name": "ox81",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-01",
+  // nodejs_compat also fills process.env from vars and secrets, which the functions read.
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "site/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // the site links only to / and to files by their full name
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ox81-store",
+      "database_id": "f35a7a83-b7a9-41c0-a554-199783325156",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // census-cron.mjs (config.schedule). The only cron this Worker has.
+  "triggers": { "crons": ["*/10 * * * *"] },
+  "observability": { "enabled": true },
+  "vars": {
+    // Workers Free (10 ms CPU per run): the cron reads each block over several runs. Set "0" on Workers Paid.
+    "CF_FREE_PLAN": "1"
+  }
+}

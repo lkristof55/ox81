@@ -1,4 +1,5 @@
-# Netlify builds the live app in app/ (https://ox81.netlify.app). The library at the repo root is not deployed;
+# Netlify builds app/ (the Netlify copy, https://ox81.netlify.app, is paused; the live app is the Cloudflare Worker in
+# app/wrangler.jsonc at https://ox81.anyfee.workers.dev). The library at the repo root is not deployed;
 # the functions import it from ../src/*.ts and esbuild bundles it into each function.
 [build]
   base = "app"

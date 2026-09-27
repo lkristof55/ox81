@@ -30,8 +30,10 @@ export function createCensus({ table, head, toggle, band, bandBig, bandTxt, mCen
   const cache = {};
   let windowName = 'latest';
   function stamp(c) {
-    const age = Math.round((Date.now() - new Date(c.generatedAt).getTime()) / 60000);
-    return c.stale ? `<span class="stale">STALE</span> <span class="muted">snapshot from slot ${fmt(c.slots.last)}, ${age} min old. the cron runs every 10 min.</span>` : '';
+    // age of the newest block in the snapshot (the snapshot can be written well after its block, see /api/census)
+    const t = c.blockTime && c.blockTime.last ? c.blockTime.last * 1000 : new Date(c.generatedAt).getTime();
+    const age = Math.round((Date.now() - t) / 60000);
+    return c.stale ? `<span class="stale">STALE</span> <span class="muted">snapshot from slot ${fmt(c.slots.last)}, block ${fmt(age)} min old.</span>` : '';
   }
   function renderTable(c) {
     const rows = censusRows(c);
@@ -60,6 +62,13 @@ export function createCensus({ table, head, toggle, band, bandBig, bandTxt, mCen
     table.innerHTML = `<p class="dashed">reading ${w === '24h' ? 'every snapshot of the last 24 h' : 'the latest finalized block'}… getBlock(slot, { maxSupportedTransactionVersion: 1 })</p>`;
     try {
       const c = await apiCensus(w);
+      if (c.warming) {
+        // nothing stored yet (a fresh deploy): same shape, no numbers. not cached, the next load asks again.
+        const msg = 'warming up: the census cron is still reading its first block. no numbers yet, none guessed.';
+        if (windowName === w) table.innerHTML = `<p class="r-msg">${msg}</p>`;
+        if (w === 'latest') { bandTxt.textContent = msg; mCensus.textContent = msg; head.textContent = 'no census yet. nothing guessed.'; }
+        return null;
+      }
       cache[w] = c;
       if (windowName === w) renderTable(c);
       if (w === 'latest') { renderBand(c); onData && onData(c); }
